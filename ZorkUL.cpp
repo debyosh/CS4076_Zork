@@ -140,6 +140,12 @@ bool ZorkUL::processCommand(Command command) {
         }
     }
 */
+	
+	else if (commandWord.compare("teleport") == 0)
+    {
+      cout << "You begin to feel dizzy..."<< endl;
+    }
+	
     else if (commandWord.compare("quit") == 0) {
 		if (command.hasSecondWord())
 			cout << "overdefined input"<< endl;
