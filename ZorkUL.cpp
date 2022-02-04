@@ -141,9 +141,15 @@ bool ZorkUL::processCommand(Command command) {
     }
 */
 	
-	else if (commandWord.compare("teleport") == 0)
+    else if (commandWord.compare("teleport") == 0)
     {
+      int num;
+
       cout << "You begin to feel dizzy..."<< endl;
+      num = rand() % 10 + 1;
+      cout << num << endl;
+    
+
     }
 	
     else if (commandWord.compare("quit") == 0) {
