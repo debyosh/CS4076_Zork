@@ -3,7 +3,7 @@
 using namespace std;
 #include "ZorkUL.h"
 
-int main(int argc, char argv[]) {
+int main(int argc, char ** argv) {
 	ZorkUL temp;
 	temp.play();
 	return 0;
@@ -14,7 +14,7 @@ ZorkUL::ZorkUL() {
 }
 
 void ZorkUL::createRooms()  {
-	Room *a, *b, *c, *d, *e, *f, *g, *h, *i;
+	Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
 	a = new Room("a");
         a->addItem(new Item("x", 1, 11));
@@ -29,10 +29,11 @@ void ZorkUL::createRooms()  {
 	g = new Room("g");
 	h = new Room("h");
 	i = new Room("i");
+        j = new Room("j");
 
 //             (N, E, S, W)
 	a->setExits(f, b, d, c);
-	b->setExits(NULL, NULL, NULL, a);
+	b->setExits(NULL, j, NULL, a);
 	c->setExits(NULL, a, NULL, NULL);
 	d->setExits(a, e, NULL, i);
 	e->setExits(NULL, NULL, NULL, d);
@@ -40,6 +41,7 @@ void ZorkUL::createRooms()  {
 	g->setExits(NULL, NULL, NULL, f);
 	h->setExits(NULL, f, NULL, NULL);
     i->setExits(NULL, d, NULL, NULL);
+    j ->setExits(NULL, NULL, b, NULL);
 
         currentRoom = a;
 }
@@ -94,7 +96,7 @@ bool ZorkUL::processCommand(Command command) {
         cout << "[h] --- [f] --- [g]" << endl;
 		cout << "         |         " << endl;
         cout << "         |         " << endl;
-		cout << "[c] --- [a] --- [b]" << endl;
+		cout << "[c] --- [a] --- [b] --- [j]" << endl;
 		cout << "         |         " << endl;
 		cout << "         |         " << endl;
 		cout << "[i] --- [d] --- [e]" << endl;
@@ -185,3 +187,5 @@ string ZorkUL::go(string direction) {
 		return currentRoom->longDescription();
 	}
 }
+
+
